@@ -1,0 +1,19 @@
+version: "3.8"
+
+# persistence for gem deps
+volumes:
+  bundle:
+
+services:
+  ruby:
+    build: .
+    image: ruby-loc
+    command: rails server
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - bundle:/usr/local/bundle
+    # environment:
+    #   GEM_HOME: /app/bundle
+    #   BUNDLE_APP_CONFIG: /app/bundle
