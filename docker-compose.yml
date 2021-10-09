@@ -8,12 +8,9 @@ services:
   ruby:
     build: .
     image: ruby-loc
-    command: rails server
+    command: rails server --pid /tmp/foo.pid -b 0.0.0.0
     ports:
       - "3000:3000"
     volumes:
       - ./:/app
       - bundle:/usr/local/bundle
-    # environment:
-    #   GEM_HOME: /app/bundle
-    #   BUNDLE_APP_CONFIG: /app/bundle
